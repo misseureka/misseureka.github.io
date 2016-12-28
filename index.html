@@ -10,9 +10,7 @@
 </body>
 
 <script>
-	(function() {
-    if (!window.rtgtCheckCookie) {
-    	window.rtgtCheckCookie = true;        
+	(function() {     
         var REDIRECT_URL = 'https://hz-test1.rutarget.ru/redirect';        
         var rtgtRedirect = false; 
 
@@ -28,15 +26,19 @@
         		if (!e.defaultPrevented) {
                     var link = getParent(e.target, 'a');
                     if (link) {
+                    	var h = link.href;
                     	link.href = redirect.getLink(link.href); 
+                    	setTimeout(function() {
+                            link.href = h;
+                        }, 0);
                     }
                 }
         	}
         }
         
     	rtgtRedirect = true;
-        window.top.addEventListener('click', redirect.clickListener, false)        
-    }
-})();
+        window.top.addEventListener('click', redirect.clickListener, false);       
+   
+	})();
 </script>
 </html>
