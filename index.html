@@ -2,16 +2,24 @@
 <html>
 
 <body>
-
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="iframe.js"></script>
   <script src="https://cdn.rutarget.ru/static/tag/tag.js"></script>
   <script>
-    function end() {
-      console.log(document.cookie);     
+    function submitForm() {
+      $('#cookiesHackForm').submit()
     }    
   </script>  
 
-  <button onclick="iframePost('https://tag.rutarget.ru/tag?event=otherPage', end)">iframePost Creative</button>
+  <button onclick="submitForm()">iframePost Creative</button>
+
+  <script type="text/javascript">
+	$(function(){
+		$('body').append('<iframe id="cookiesHackFrame" name="cookiesHackFrame" src="" style="display:none;"></iframe>');
+		$('body').append('<form id="cookiesHackForm" action="https://tag.rutarget.ru/tag?event=otherPage" method="post" target="cookiesHackFrame" >');
+	});
+</script>
 
 </body>
 
