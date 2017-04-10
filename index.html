@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  <body>
+    <h1>Я знаю кто ты</h1>
+    <div id="api_result"></div>
+    <script type="text/javascript">
+  	 $(function(){
+        function getParameterByName(name, url) {
+          if (!url) {
+            url = window.location.href;
+          }
+          name = name.replace(/[\[\]]/g, "\\$&");
+          var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+              results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+        var api_result = getParameterByName('api_result');
+    		$('#api_result').innerHTML = api_result;    		
+    	});
+    </script>
 
-<body>
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="iframe.js"></script>
-  <script src="https://cdn.rutarget.ru/static/tag/tag.js"></script>
-  <script>
-    function submitForm() {
-      $('#cookiesHackForm').submit()
-    }    
-  </script>  
-
-  <button onclick="submitForm()">iframePost Creative</button>
-
-  <script type="text/javascript">
-	$(function(){
-		$('body').append('<iframe id="cookiesHackFrame" name="cookiesHackFrame" src="https://tag.rutarget.ru/tag" style="display:none;"></iframe>');
-		$('body').append('<form id="cookiesHackForm" action="https://creative.rutarget.ru/creative?name=creative&cid=7&shop_id=testshop1&bid_value=0.0&ssp=google&rid=test-1&t=26483" method="post" target="cookiesHackFrame" >');
-	});
-</script>
-
-</body>
+  </body>
 
 </html>
